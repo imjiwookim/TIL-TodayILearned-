@@ -30,7 +30,7 @@
     h1{
         font-size: 1.5rem;
         color: #333;
-        margin-bottom: 20px;
+        margin-bottom: 50px;
         text-align: center;
     }
 
@@ -39,32 +39,21 @@
         margin-bottom: 6px;
     }
 
-    .gender-group {
-        display: flex;
-        gap: 12px;
-        margin-bottom: 16px;
+    select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      outline: none;
+      margin-bottom: 16px;
+      cursor: pointer;
     }
 
-    .gender-group input[type="radio"]{
-        display: none; /*라벨로 대체*/
+    select:focus {
+      border-color: #4a90e2;
     }
 
-    .gender-group label{
-        flex: 1;
-        text-align: center;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 0.9rem;
-        color: #555;
-    }
-
-    .gender-group input[type="radio"]:checked + label {
-        background-color: #4a90e2; /* 선택되면 배경 파란색 */
-        color: white;              /* 글자 흰색 */
-        border-color: #4a90e2;     /* 테두리도 파란색 */
-    }
 
     input[type="number"]{
         width: 100%;
@@ -78,7 +67,7 @@
     button{
         width: 100%;
         padding: 12px;
-        background-color: #4a90e2;
+        background-color: #54a5e8;
         color: white;
         border: none;
         border-radius: 8px;
@@ -91,7 +80,16 @@
         background-color: #357abd;;
     }
 
-
+    #result {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #333;
+      background-color: #ffe6fd;
+      border-radius: 8px;
+      padding: 16px;
+      display: none;
+    }
 
   </style>
 </head>
@@ -102,12 +100,10 @@
 
     <!-- 성별 -->
     <div class="gender-title">성별</div>
-    <div class="gender-group">
-      <input type="radio" id="male" name="gender" value="male" checked>
-      <label for="male">남자</label>
-      <input type="radio" id="female" name="gender" value="female">
-      <label for="female">여자</label>
-    </div>
+    <select id="gender">
+      <option value="male">남자</option>
+      <option value="female">여자</option>
+    </select>
 
     <!-- 키 -->
     <label class="input-label" for="height">키 (cm)</label>
@@ -135,7 +131,7 @@
       const weight = document.getElementById("weight").value;
       const age = document.getElementById("age").value;
       const gender = document.getElementById("gender").value;
-
+        
       let bmr;
 
       if (gender === "male") {
@@ -146,6 +142,7 @@
 
       document.getElementById("result").innerText =
         "결과: " + Math.round(bmr) + " kcal"; //round는 반올림 함수
+        document.getElementById("result").style.display = "block";
     }
   </script>
 </body>
