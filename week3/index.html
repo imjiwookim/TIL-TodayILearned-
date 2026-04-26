@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>아기사자 대시보드</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ① 상단 컨트롤 영역 -->
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <span class="logo">🦁 LION TRACK</span>
+      <span class="member-count">총 <strong id="memberCount">6</strong>명</span>
+    </div>
+    <div class="top-bar-right">
+      <button class="btn btn-add" id="toggleFormBtn" onclick="toggleForm()">+ 아기사자 추가</button>
+      <button class="btn btn-delete" onclick="deleteLastMember()">− 마지막 삭제</button>
+    </div>
+  </header>
+
+  <!-- ② 추가 폼 영역 (초기 닫힘) -->
+  <section class="form-section" id="formSection">
+    <div class="form-wrapper">
+      <h2 class="form-title">새 아기사자 추가</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>이름 *</label>
+          <input type="text" id="f-name" placeholder="홍길동" />
+        </div>
+        <div class="form-group">
+          <label>파트 *</label>
+          <select id="f-part">
+            <option value="Frontend">Frontend</option>
+            <option value="Backend">Backend</option>
+            <option value="Design">Design</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>한 줄 소개 *</label>
+          <input type="text" id="f-shortIntro" placeholder="요약 카드에 표시될 한 줄 소개" />
+        </div>
+        <div class="form-group">
+          <label>관심 기술 (쉼표로 구분) *</label>
+          <input type="text" id="f-skills" placeholder="React, TypeScript, Next.js" />
+        </div>
+        <div class="form-group full-width">
+          <label>자기소개</label>
+          <textarea id="f-intro" rows="3" placeholder="상세 카드에 표시될 자기소개를 입력하세요"></textarea>
+        </div>
+        <div class="form-group">
+          <label>이메일</label>
+          <input type="email" id="f-email" placeholder="example@email.com" />
+        </div>
+        <div class="form-group">
+          <label>전화번호</label>
+          <input type="tel" id="f-phone" placeholder="010-0000-0000" />
+        </div>
+        <div class="form-group">
+          <label>웹사이트 / GitHub</label>
+          <input type="text" id="f-website" placeholder="github.com/username" />
+        </div>
+        <div class="form-group">
+          <label>한 마디</label>
+          <input type="text" id="f-lastword" placeholder="각오 한 마디!" />
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-add" onclick="addMember()">추가하기</button>
+        <button class="btn btn-cancel" onclick="toggleForm()">취소</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ③ 요약 카드 그리드 -->
+  <main>
+    <section class="section-block">
+      <h2 class="section-title">멤버 소개</h2>
+      <div class="card-grid" id="cardGrid"></div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ④ 상세 카드 목록 -->
+    <section class="section-block">
+      <h2 class="section-title">상세 소개</h2>
+      <div id="detailList"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
